@@ -25,59 +25,60 @@
             <div class="container__items">
                 <div class="container__item">
                     <input type="checkbox" class="container__checker" id="item_0">
-                    <span class="container__name">1.</span>
+                    <span class="container__name">1. </span>
                 </div>
                 <div class="container__item">
                     <input type="checkbox" class="container__checker" id="item_1">
-                    <span class="container__name">2.</span>
+                    <span class="container__name">2. </span>
                 </div>
                 <div class="container__item">
                     <input type="checkbox" class="container__checker" id="item_2">
-                    <span class="container__name">3.</span>
+                    <span class="container__name">3. </span>
                 </div>
                 <div class="container__item">
                     <input type="checkbox" class="container__checker" id="item_3">
-                    <span class="container__name">4.</span>
+                    <span class="container__name">4. </span>
                 </div>
                 <div class="container__item">
                     <input type="checkbox" class="container__checker" id="item_4">
-                    <span class="container__name">5.</span>
+                    <span class="container__name">5. </span>
                 </div>
                 <div class="container__item">
                     <input type="checkbox" class="container__checker" id="item_5">
-                    <span class="container__name">6.</span>
+                    <span class="container__name">6. </span>
                 </div>
                 <div class="container__item">
                     <input type="checkbox" class="container__checker" id="item_6">
-                    <span class="container__name">7.</span>
+                    <span class="container__name">7. </span>
                 </div>
                 <div class="container__item">
                     <input type="checkbox" class="container__checker" id="item_7">
-                    <span class="container__name">8.</span>
+                    <span class="container__name">8. </span>
                 </div>
             </div>
         </div>
         <div class="container__control">
             <button onclick="getValue()" class="btn">Nhập</button>
             <button onclick="decrease()" class="btn">Xóa</button>
-            <button onclick="" class="btn">Lưu</button>
+            <!-- <button onclick="" class="btn">Lưu</button> -->
         </div>
         <div class="container__result" id="p1">
-            <p class="container__sum-item"></p>
         </div>
     </div>
 
     <script>
         const ele = new Array(0,0,0,0,0,0,0,0)
+        const a = new Array (0,0,0,0,0)
         var dem = 0
         function getValue() {
             var sum = 0;
+            var counter = 0;
             for (i = 0 ; i< ele.length ; i++) {
                 if (document.getElementById(`item_${i}`).checked) {
                     sum += 1;
                 }
             }
-            if (sum == ele.length || sum == 0) {
+            if (sum >= (ele.length-2) || sum == 0) {
                 alert("Khong hop le");
                 for (i = 0; i < ele.length; i++) {
                            check = document.getElementById(`item_${i}`);
@@ -88,42 +89,56 @@
                 for (i = 0 ; i< ele.length ; i++){
                     if (document.getElementById(`item_${i}`).checked) {
                         ele[i] += 1;
+                        counter += 1;
                     }
                 }
             }
+            if (counter == 1) {a[0]+=1}
+            if (counter == 2) {a[1]+=1}
+            if (counter == 3) {a[2]+=1}
+            if (counter == 4) {a[3]+=1}
+            if (counter == 5) {a[4]+=1}
+
             document.getElementById('p1').innerHTML = `
              <p class="container__result-title">Kết quả: ${dem} phiếu</p>
              <div class="container__sum">
-                 <p class="container__sum-item">1.: ${ele[0]}</p>
+                 <p class="container__sum-item">1. : ${ele[0]}</p>
                  <p class="container__sum-item">${((ele[0]/dem)*100).toFixed(2)}%</p>
              </div>
              <div class="container__sum">
-                 <p class="container__sum-item">2.: ${ele[1]} </p>
+                 <p class="container__sum-item">2. : ${ele[1]} </p>
                  <p class="container__sum-item">${((ele[1]/dem)*100).toFixed(2)}%</p>
              </div>
              <div class="container__sum">
-                 <p class="container__sum-item">3.: ${ele[2]} </p>
+                 <p class="container__sum-item">3. : ${ele[2]} </p>
                  <p class="container__sum-item">${((ele[2]/dem)*100).toFixed(2)}%</p>
              </div>
              <div class="container__sum">
-                 <p class="container__sum-item">4.: ${ele[3]} </p>
+                 <p class="container__sum-item">4. : ${ele[3]} </p>
                  <p class="container__sum-item">${((ele[3]/dem)*100).toFixed(2)}%</p>
              </div>
              <div class="container__sum">
-                 <p class="container__sum-item">5.: ${ele[4]}</p>
+                 <p class="container__sum-item">5. : ${ele[4]}</p>
                  <p class="container__sum-item">${((ele[4]/dem)*100).toFixed(2)}%</p>
              </div>
              <div class="container__sum">
-                 <p class="container__sum-item">6.: ${ele[5]} </p>
+                 <p class="container__sum-item">6. : ${ele[5]} </p>
                  <p class="container__sum-item">${((ele[5]/dem)*100).toFixed(2)}%</p>
              </div>
              <div class="container__sum">
-                 <p class="container__sum-item">7.: ${ele[6]} </p>
+                 <p class="container__sum-item">7. : ${ele[6]} </p>
                  <p class="container__sum-item">${((ele[6]/dem)*100).toFixed(2)}%</p>
              </div>
              <div class="container__sum">
-                 <p class="container__sum-item">8.: ${ele[7]} </p>
+                 <p class="container__sum-item">8. : ${ele[7]} </p>
                  <p class="container__sum-item">${((ele[7]/dem)*100).toFixed(2)}%</p>
+             </div>
+             <div class="contaner__counter">
+                <p class="container__counter-item">Bầu 1: ${a[0]}</p>
+                <p class="container__counter-item">Bầu 2: ${a[1]}</p>
+                <p class="container__counter-item">Bầu 3: ${a[2]}</p>
+                <p class="container__counter-item">Bầu 4: ${a[3]}</p>
+                <p class="container__counter-item">Bầu 5: ${a[4]}</p>
              </div>
              `
  
@@ -135,13 +150,14 @@
 
         function decrease() {
             var sum = 0;
+            var counter = 0;
             for (i = 0 ; i< ele.length ; i++) {
                 if (document.getElementById(`item_${i}`).checked) {
                     sum += 1;
                 }
             }
 
-            if (sum == ele.length || sum == 0) {
+            if (sum >= (ele.length-2) || sum == 0) {
                 alert("Khong hop le");
                 for (i = 0; i < ele.length; i++) {
                            check = document.getElementById(`item_${i}`);
@@ -157,43 +173,57 @@
                     for (i = 0 ; i< ele.length ; i++){
                         if (document.getElementById(`item_${i}`).checked) {
                             ele[i] -= 1;
+                            counter += 1;
                         }
                     }
                 }
             }
+            if (counter == 1) {a[0] -= 1}
+            if (counter == 2) {a[1] -= 1}
+            if (counter == 3) {a[2] -= 1}
+            if (counter == 4) {a[3] -= 1}
+            if (counter == 5) {a[4] -= 1}
+
             document.getElementById('p1').innerHTML = `
             <p class="container__result-title">Kết quả: ${dem} phiếu</p>
              <div class="container__sum">
-                 <p class="container__sum-item">1.: ${ele[0]}</p>
+                 <p class="container__sum-item">1. : ${ele[0]}</p>
                  <p class="container__sum-item">${((ele[0]/dem)*100).toFixed(2)}%</p>
              </div>
              <div class="container__sum">
-                 <p class="container__sum-item">2.: ${ele[1]} </p>
+                 <p class="container__sum-item">2. : ${ele[1]} </p>
                  <p class="container__sum-item">${((ele[1]/dem)*100).toFixed(2)}%</p>
              </div>
              <div class="container__sum">
-                 <p class="container__sum-item">3.: ${ele[2]} </p>
+                 <p class="container__sum-item">3. : ${ele[2]} </p>
                  <p class="container__sum-item">${((ele[2]/dem)*100).toFixed(2)}%</p>
              </div>
              <div class="container__sum">
-                 <p class="container__sum-item">4.: ${ele[3]} </p>
+                 <p class="container__sum-item">4. : ${ele[3]} </p>
                  <p class="container__sum-item">${((ele[3]/dem)*100).toFixed(2)}%</p>
              </div>
              <div class="container__sum">
-                 <p class="container__sum-item">5.: ${ele[4]}</p>
+                 <p class="container__sum-item">5. : ${ele[4]}</p>
                  <p class="container__sum-item">${((ele[4]/dem)*100).toFixed(2)}%</p>
              </div>
              <div class="container__sum">
-                 <p class="container__sum-item">6.: ${ele[5]} </p>
+                 <p class="container__sum-item">6. : ${ele[5]} </p>
                  <p class="container__sum-item">${((ele[5]/dem)*100).toFixed(2)}%</p>
              </div>
              <div class="container__sum">
-                 <p class="container__sum-item">7.: ${ele[6]} </p>
+                 <p class="container__sum-item">7. : ${ele[6]} </p>
                  <p class="container__sum-item">${((ele[6]/dem)*100).toFixed(2)}%</p>
              </div>
              <div class="container__sum">
-                 <p class="container__sum-item">8.: ${ele[7]} </p>
+                 <p class="container__sum-item">8. : ${ele[7]} </p>
                  <p class="container__sum-item">${((ele[7]/dem)*100).toFixed(2)}%</p>
+             </div>
+             <div class="contaner__counter">
+                <p class="container__counter-item">Bầu 1: ${a[0]}</p>
+                <p class="container__counter-item">Bầu 2: ${a[1]}</p>
+                <p class="container__counter-item">Bầu 3: ${a[2]}</p>
+                <p class="container__counter-item">Bầu 4: ${a[3]}</p>
+                <p class="container__counter-item">Bầu 5: ${a[4]}</p>
              </div>
              `
  

@@ -40,24 +40,27 @@
         <div class="container__control">
             <button onclick="getValue()" class="btn">Nhập</button>
             <button onclick="decrease()" class="btn">Xóa</button>
-            <button onclick="" class="btn">Lưu</button>
+            <!-- <button onclick="" class="btn">Lưu</button> -->
         </div>
         <div class="container__result" id="p1">
-            <p class="container__sum-item"></p>
+            
         </div>
     </div>
 
     <script>
         const ele = new Array(0,0,0)
+        const a = new Array(0,0)
         var dem = 0
         function getValue() {
             var sum = 0;
+            var counter = 0
+            
             for (i = 0 ; i< ele.length ; i++) {
                 if (document.getElementById(`item_${i}`).checked) {
                     sum += 1;
                 }
             }
-            if (sum == 3 || sum == 0) {
+            if (sum >= 3 || sum == 0) {
                 alert("Khong hop le");
                 for (i = 0; i < ele.length; i++) {
                            check = document.getElementById(`item_${i}`);
@@ -68,9 +71,12 @@
                 for (i = 0 ; i< ele.length ; i++){
                     if (document.getElementById(`item_${i}`).checked) {
                         ele[i] += 1;
+                        counter += 1;
                     }
                 }
             }
+            if (counter == 1) {a[0]+=1}
+            if (counter == 2) {a[1]+=1}
             document.getElementById('p1').innerHTML = `
              <p class="container__result-title">Kết quả: ${dem} phiếu</p>
              <div class="container__sum">
@@ -85,6 +91,10 @@
                  <p class="container__sum-item">3. Nguyễn Công Thanh: ${ele[2]} </p>
                  <p class="container__sum-item">${((ele[2]/dem)*100).toFixed(2)}%</p>
              </div>
+             <div class="contaner__counter">
+                <p class="container__counter-item">Bầu 1: ${a[0]}</p>
+                <p class="container__counter-item">Bầu 2: ${a[1]}</p>
+             </div>
              `
  
              for (i = 0; i < ele.length; i++) {
@@ -95,13 +105,14 @@
 
         function decrease() {
             var sum = 0;
+            var counter = 0
             for (i = 0 ; i< ele.length ; i++) {
                 if (document.getElementById(`item_${i}`).checked) {
                     sum += 1;
                 }
             }
 
-            if (sum == 3 || sum == 0 ) {
+            if (sum >= 3 || sum == 0 ) {
                 alert("Khong hop le");
                 for (i = 0; i < ele.length; i++) {
                            check = document.getElementById(`item_${i}`);
@@ -117,11 +128,13 @@
                     for (i = 0 ; i< ele.length ; i++){
                         if (document.getElementById(`item_${i}`).checked) {
                             ele[i] -= 1;
+                            counter += 1;
                         }
                     }
                 }
-    
             }
+            if (counter == 1) {a[0] -= 1}
+            if (counter == 2) {a[1] -= 1}
             document.getElementById('p1').innerHTML = `
             <p class="container__result-title">Kết quả: ${dem} phiếu</p>
              <div class="container__sum">
@@ -135,6 +148,10 @@
              <div class="container__sum">
                  <p class="container__sum-item">3. Nguyễn Công Thanh: ${ele[2]} </p>
                  <p class="container__sum-item">${((ele[2]/dem)*100).toFixed(2)}%</p>
+             </div>
+             <div class="contaner__counter">
+                <p class="container__counter-item">Bầu 1: ${a[0]}</p>
+                <p class="container__counter-item">Bầu 2: ${a[1]}</p>
              </div>
              `
  
